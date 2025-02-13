@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+    }
+body{
+            background-color: beige;
+        }
+.container{
+    display: flex;
+}
+
+.nav{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: #fff;
+    width: 280px;
+    overflow: hidden;
+    box-shadow: 0 28px 35px rgba(0,0,0,0.1);
+}
+
+.logo{
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;
+}
+.logo img{
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+a{
+    position: relative;
+    color: rgba(85,83,83);
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+}
+nav .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 20px;
+}
+a:hover{
+    background: #eee;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+}
+.container1{
+    color:black;
+    font-size: larger;
+    width: 80%;
+    border: 1px solid black;
+    height: auto;
+    text-align: center;
+
+    
+}
+.container1 table{
+    border: 2px solid black;
+    align-content: center;
+    width:100%;
+}
+
+.container1 table th{
+    font-size: 24px;
+     border: 2px solid black;
+}
+.container1 table td{
+    font-size: 24px;
+     border: 2px solid black;
+}
+
+
+    </style>
+<body>
+    <div class = "container">
+        <nav>
+            <ul>
+                <li><a href="#" class="logo">
+                    <img src="{{ url_for('static', filename='img/pic3.jpg') }}" alt="">
+                    <span class="nav-item">Admin Dashboard</span>
+                <li><a href="/admin_profile/{{admin_id}}">
+                    <i class="fas fa-user"></i> 
+                    <span class="nav-item">Profile</span>
+                </a></li>
+
+                <li><a href="/admin/message_report">
+                    <i class="fas fa-paper-plane"></i> 
+                    <span class="nav-item">Employee Report</span>
+                </a></li>
+
+                <li><a href="/admin/ad_monitor_performance">
+                    <i class="fas fa-bar-chart"></i> 
+                    <span class="nav-item"> Monitor Performance</span>
+                </a></li>
+
+
+                
+                <li><a href="" class="logout">
+                    <i class="fas fa-sign-out-alt"></i> 
+                    <span class="nav-item">Logout</span>
+                </a></li>
+                
+                   
+       
+                
+        </nav>
+
+        <div class = "container1">
+            <h1>Report and Records Monitoring</h1>
+            <table border = 2px solid black style="text-align: center; align-items: center;">
+                <tr style = "font-size: 24px; border: 2px solid black;">
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Adress</th>
+                    <th>Status</th>
+                    <th>Contact</th>
+                    <th>Action</th>
+    
+            </tr>
+            {%for i in admins%}
+            <tr>
+               
+            <td>
+                
+                {{i[1]}}
+            
+                
+            </td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td>{{i[6]}}</td>
+            <td style = "display: flex; width: auto; gap: 10px;"><a href="/confirm/{{i[0]}}" style=" color:black;background-color:green;">confirm</a>
+                <a href="/delete/{{i[0]}}" style = "color:black;background-color: red;">delete</a>
+            </td>
+            
+            
+        <tr>
+            {%endfor%}
+            
+
+    </table>
+    
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+    
+    
+</body>
+</html>

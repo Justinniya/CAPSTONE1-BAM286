@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: skyblue;
+            display: flex;
+        }
+
+        nav {
+            width: 280px;
+            background: #fff;
+            height: 100vh;
+            box-shadow: 0 28px 35px rgba(0,0,0,0.1);
+            padding-top: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            display: block;
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #eee;
+            border-radius: 5px;
+        }
+
+        .container {
+            width: calc(100% - 280px);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            width: 60%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+            margin-bottom: 10px;
+        }
+
+        .profile-card h2 {
+            color: #333;
+            font-size: 22px;
+        }
+
+        .profile-card p {
+            color: #777;
+            font-size: 16px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fas fa-user"></i> Employee Profile</a></li>
+            <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>My Profile</h1>
+        
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/120" alt="Employee Photo">
+            <h2>John Doe</h2>
+            <p>Software Engineer</p>
+        </div>
+
+        <h2>My Information</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Contact Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>Male</td>
+                    <td>New York, USA</td>
+                    <td>+1 234 567 890</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

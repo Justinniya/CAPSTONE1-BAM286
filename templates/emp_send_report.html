@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Send Report</title>
+</head>
+<body>
+    <form action="/message_report/{{id}}" method="POST" enctype="multipart/form-data">
+    <textarea name="message" data-maxlength="255" rows="7" cols="40" dir="ltr" id="field_2_3" onchange="return verificationsAfterFieldChange('b068931cc450442b63f5b3d276ea4297', '0','varchar(255)')" tabindex="2" data-type="CHAR"></textarea>
+    <input name="image" type="file">
+    <input type="submit">
+</form>
+</body>
+</html>

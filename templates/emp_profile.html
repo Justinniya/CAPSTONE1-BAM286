@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+body{
+    background: skyblue;
+}
+.container{
+    display: flex;
+}
+
+nav{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: #fff;
+    width: 280px;
+    overflow: hidden;
+    box-shadow: 0 28px 35px rgba(0,0,0,0.1);
+}
+
+.logo{
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;
+}
+.logo img{
+
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+a{
+    position: relative;
+    color: rgba(85,83,83);
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+}
+nav .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 20px;
+}
+a:hover{
+    background: #eee;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+}
+.container2{
+    color:black;
+    font-size: larger;
+    width: 80%;
+    border: 1px solid black;
+    height: 400px;
+    text-align: center;
+    align-items: center;
+    
+}
+.container h1{
+    margin-top: 150px;
+}
+.container2{ 
+width: calc(100% - 280px);
+padding: 20px;
+text-align: center; 
+
+}
+
+table {
+    width: 80%; 
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+th, td { 
+    border: 2px solid black;
+    padding: 10px; 
+    text-align: center;
+
+}
+th {
+    background-color: #f2f2f2;
+}
+.container2 h1{
+    margin-top: 50px;
+
+}
+</style>
+<body>
+
+    <div>
+        <nav>
+                <ul>
+                    <li><a href="#" class="logo">
+                        <i class="fas fa-user"></i> 
+                        <span class="nav-item">Employee Profile</span>
+                    <li><a href="" class="logout">
+                        <i class="fas fa-sign-out-alt"></i> 
+                        <span class="nav-item">Logout</span>
+                    </a></li>
+                </ul>
+            
+        </nav>
+
+    </div>
+    
+</body>
+</html>
