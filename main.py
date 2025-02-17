@@ -190,6 +190,9 @@ def ad_message_report():
         return render_template("admin_message_report.html",messages=messages,admin_id=admin_id)
     else:
         return redirect('/')
+@app.route('/admin/ad_monitor_performance')
+def admin_monitor_performance():
+    return render_template('ad_monitor_performance.html')
 
 @app.route('/admin/ad_user')
 def admin_user():
