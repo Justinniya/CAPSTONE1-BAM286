@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: skyblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .dashboard-container {
+            background-color: whitesmoke;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(50, 44, 44, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logout-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .profile-section, .activities-section, .settings-section {
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .profile-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        
+        .profile-details p {
+            margin: 5px 0;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        section {
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        h3 {
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        button {
+            width: 450px;
+            padding: 10px;
+            margin-left: 150px;
+            background-color: #007BFF;
+
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .settings-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .settings-button:hover {
+            background-color: #0056b3;
+        }
+        
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+
+         </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            {% for profile in ad_user %}
+            <h2>Welcome, <span id="username"></span>{{profile[1]}}!</h2>
+        </header>
+
+        <section class="profile-section">
+               
+            <h3>My Profile</h3> 
+            <div class="profile-info">
+                <div class="profile-details">
+                    <p><strong>Name :</strong> <span id="profile_name">{{ profile[1] }}</span></p>
+                    <p><strong>Age :</strong> <span id="profile_age">{{ profile[2] }}</span></p>
+                    <p><strong>Address :</strong> <span id="profile_Address">{{ profile[3] }}</span></p>
+                    <p><strong>Gender :</strong> <span id="profile_gender">{{ profile[4] }}</span></p>
+                    <p><strong>Marital Status:</strong> <span id="profile_status">{{ profile[5] }}</span></p>
+                    <p><strong>Contact Number:</strong> <span id="profile_contact_no">{{ profile[6] }}</span></p>
+                    <p><strong>Work Position:</strong> <span id="profile_work_post">{{ profile[7] }}</span></p>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <section class="settings-section">
+            <h3>Settings</h3>
+            <button id="edit_profile" class="settings_button">Edit Profile</button>
+            <button id="logout" class="logout_button">Return</button>
+
+        </section>
+    </div>
+</body>
+</html>

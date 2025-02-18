@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-    <style>
+<style>
     *{
     margin: 0;
     padding: 0;
@@ -16,15 +16,15 @@
     text-decoration: none;
     box-sizing: border-box;
     font-family: "Poppins",sans-serif;
-    }
+}
 body{
-            background-color: beige;
-        }
+    background: skyblue;
+}
 .container{
     display: flex;
 }
 
-.nav{
+nav{
     position: relative;
     top: 0;
     bottom: 0;
@@ -43,8 +43,8 @@ body{
 }
 .logo img{
 
-    width: 70px;
-    height: 70px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
 
@@ -86,118 +86,106 @@ a:hover{
     color:black;
     font-size: larger;
     width: 80%;
-    border: 1px solid black;
-    height: auto;
+    height: 400px;
     text-align: center;
-
+    align-items: center;
     
 }
-.container1 table{
+.container h1{
+    margin-top: 150px;
+}
+.container1{ 
+width: calc(100% - 280px);
+padding: 20px;
+text-align: center; 
+
+}
+
+table {
+    width: 80%; 
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+th, td { 
     border: 2px solid black;
-    align-content: center;
-    width:100%;
+    padding: 10px; 
+    text-align: center;
+
+}
+th {
+    background-color: #f2f2f2;
+}
+.container1 h1{
+    margin-top: 50px;
+
 }
 
-.container1 table th{
-    font-size: 24px;
-     border: 2px solid black;
-}
-.container1 table td{
-    font-size: 24px;
-     border: 2px solid black;
-}
 
-
-    </style>
+</style>
 <body>
-    <div class = "container">
+    <div class="container">
         <nav>
             <ul>
                 <li><a href="#" class="logo">
                     <img src="{{ url_for('static', filename='img/pic3.jpg') }}" alt="">
-                    <span class="nav-item">Admin Dashboard</span>
-                <li><a href="/admin_profile/{{admin_id}}">
+                    <span class="nav-item">Admin  Dashboard</span>
+
+                <li><a href="/admin_profile/{{ admin_id }}">
                     <i class="fas fa-user"></i> 
                     <span class="nav-item">Profile</span>
                 </a></li>
 
-                <li><a href="/admin/message_report">
+                <li><a href="admin_check_report.html">
                     <i class="fas fa-paper-plane"></i> 
-                    <span class="nav-item">Employee Report</span>
+                    <span class="nav-item">Check Reports</span>
                 </a></li>
 
                 <li><a href="/admin/ad_monitor_performance">
                     <i class="fas fa-bar-chart"></i> 
-                    <span class="nav-item"> Monitor Performance</span>
+                    <span class="nav-item">Monitor Performance</span>
                 </a></li>
 
-
-                
                 <li><a href="" class="logout">
                     <i class="fas fa-sign-out-alt"></i> 
                     <span class="nav-item">Logout</span>
                 </a></li>
                 
-                   
-       
                 
+
+            </ul>
         </nav>
 
         <div class = "container1">
-            <h1>Report and Records Monitoring</h1>
-            <table border = 2px solid black style="text-align: center; align-items: center;">
-                <tr style = "font-size: 24px; border: 2px solid black;">
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Adress</th>
-                    <th>Status</th>
-                    <th>Contact</th>
-                    <th>Action</th>
-    
-            </tr>
-            {%for i in admins%}
-            <tr>
-               
-            <td>
-                
-                {{i[1]}}
-            
-                
-            </td>
-            <td>{{i[2]}}</td>
-            <td>{{i[3]}}</td>
-            <td>{{i[4]}}</td>
-            <td>{{i[5]}}</td>
-            <td>{{i[6]}}</td>
-            <td style = "display: flex; width: auto; gap: 10px;"><a href="/confirm/{{i[0]}}" style=" color:black;background-color:green;">confirm</a>
-                <a href="/delete/{{i[0]}}" style = "color:black;background-color: red;">delete</a>
-            </td>
-            
-            
-        <tr>
-            {%endfor%}
+            <h1>Monitor Reports and Records</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name of Employees</th>
+                        <th>Weekly Attendance</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTable">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
             
 
-    </table>
+                
+            
     
-
         </div>
+
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
 
     
     

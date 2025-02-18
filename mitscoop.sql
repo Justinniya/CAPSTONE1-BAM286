@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2025 at 01:05 PM
+-- Generation Time: Feb 18, 2025 at 04:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,10 +44,6 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`admin_id`, `name`, `age`, `gender`, `address`, `status`, `contact_no`, `username`, `password`) VALUES
-(1, 'loyd', '4', '4', '4', '4', '4', 'Admin', '7'),
-(2, 'loyd2', '4', '4', '4', '4', '4', 'Admin', '7'),
-(3, 'loyd2', '4', '4', '4', '4', '4', 'Admin', '7'),
-(4, 'loyd2', '4', '4', '4', '4', '4', 'Admin', '7'),
 (5, 'loyd Almonte', '4', 'Male', 'hghaghaghagh', 'Single', '0999999', 'Admin', 'cuteboy'),
 (6, '6', '6', '6', '6', '6', '6', 'Admin', '6'),
 (7, '6', '6', '6', '6', '6', '6', '6', '6'),
@@ -62,10 +58,21 @@ INSERT INTO `admin_users` (`admin_id`, `name`, `age`, `gender`, `address`, `stat
 
 CREATE TABLE `message_report` (
   `id` int(11) NOT NULL,
+  `sender_id` varchar(255) NOT NULL,
   `message` mediumtext NOT NULL DEFAULT '"',
   `sender` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `message_report`
+--
+
+INSERT INTO `message_report` (`id`, `sender_id`, `message`, `sender`, `image`) VALUES
+(28, '37', '2312', 'Alarcon', NULL),
+(29, '37', '2312', 'Alarcon', NULL),
+(30, '37', '3', 'Alarcon', NULL),
+(31, '37', '32', 'Alarcon', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,7 +140,7 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `message_report`
 --
 ALTER TABLE `message_report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`

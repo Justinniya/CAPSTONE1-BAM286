@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Send Report</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: skyblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .report-container{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
+            text-align: center;
+            width: 1000px;
+
+        }
+        textarea{
+            border-radius: 10px;
+        }
+
+        #submit {
+              margin-top: 15px;
+              padding: 10px 20px;
+              border: none;
+              background: blue;
+              color: white;
+              font-size: 16px;
+              cursor: pointer;
+              border-radius: 5px;
+          }
+          #submit:hover {
+              background: skyblue;
+          }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+    <form action="/message_report" method="POST" enctype="multipart/form-data">
+    <h2>WRITE A REPORT</h2>
+    <textarea name="message" placeholder="Enter your report here ..." data-maxlength="255" rows="30" cols="80" dir="ltr" id="field_2_3"
+     onchange="return verificationsAfterFieldChange('b068931cc450442b63f5b3d276ea4297', '0','varchar(255)')" tabindex="2" 
+     data-type="CHAR"></textarea>
+     <br>
+
+    <h2>SEND A REPORT THROUGH IMAGE</h2></p>
+
+    <input name="image" type="file"><br>
+    
+    <input id="submit" type="submit"/>
+    <br>    
+    
+</form>
+</div>
+
+</body>
+</html>

@@ -61,7 +61,7 @@ def registration():
                return redirect('/register')
                 
    else:
-       return render_template("login.html")
+       return render_template("registration.html")
 
 #iya namn ni sang admin nga registration pra nd mag sala ang mag register like employee kg admin
 @app.route('/ad_register',methods = ["GET","POST"])
@@ -87,7 +87,7 @@ def login():
     if request.method == "POST":
         name = request.form["username"]
         pwd = request.form["password"]
-        work_post = request.form["work_post"]
+        work_post = request.form["work_position"]
         cursor = mysql.connection.cursor()
         print(name,pwd)
         if work_post == "Admin": # diri gina check if admin sys or hnd
@@ -104,21 +104,61 @@ def login():
             user = cursor.fetchone()
             if user:
                 session['user_id'] = user[0] #session para sa users
-                return redirect("/home")
+                return redirect("/emp_dashboard")
             else:
                 print("error")
                 return redirect(url_for("login"))
     return render_template("login.html")
 
 
-@app.route("/home")
-def home():
+@app.route("/emp_dashboard")
+def employee_dashboard():
     user_id = session.get("user_id")
-    return render_template("home.html",user_id=user_id)
+    return render_template("employee_dashboard.html",user_id=user_id)
+
+@app.route('/emp_profile')
+def emp_acc():
+    cursor = mysql.connection.cursor()
+    user_id = session.get("user_id")
+    cursor.execute(f"SELECT * FROM users Where user_id = {user_id}")
+    ad_user = [cursor.fetchone()]
+    
+    return render_template("employee_profile.html",ad_user=ad_user)
 
 @app.route('/view_performance')
 def performance():
     return render_template('emp_view_performance.html')
+
+@app.route("/message_report",methods=["GET","POST"])
+def message_report():
+    id = session.get("user_id")
+    cursor = mysql.connection.cursor()
+    cursor.execute(f"SELECT name FROM users WHERE user_id = {id}")
+    result = cursor.fetchone()
+    if request.method == "POST":
+        message = request.form["message"]
+        image = request.files["image"]
+        image_path = None
+        if image and image.filename:
+            image_path = app.config['UPLOAD_FOLDER']+'/'+image.filename
+            image.save(image_path)
+        cursor = mysql.connection.cursor()
+        cursor.execute(f"INSERT INTO message_report VALUES(0,%s,%s,%s,%s)",(id,message,result,image_path))
+        cursor.connection.commit()
+        return redirect('/message_report')
+    else:
+        return render_template("employee_send_report.html")
+    
+@app.route('/check_report')
+def check_report():
+    return render_template('employee_view_perf.html')
+
+@app.route("/message_report/delete/<string:id>")
+def message_report_delete(id):
+    cursor = mysql.connection.cursor()
+    cursor.execute(f"DELETE FROM message_report WHERE id = {id}")
+    cursor.connection.commit()
+    return redirect('/admin/message_report')
 
 @app.route('/emp_db')
 def emp_db():
@@ -159,26 +199,10 @@ def delete_user(id):
 def admin_acc(id):
     cursor = mysql.connection.cursor()
     cursor.execute(f"SELECT * FROM admin_users Where admin_id = {id}")
-    ad_user = cursor.fetchone()
+    ad_user = [cursor.fetchone()]
     return render_template("admin_profile.html",ad_user=ad_user)
 
-@app.route("/message_report/<int:id>",methods=["GET","POST"])
-def message_report(id):
-    cursor = mysql.connection.cursor()
-    cursor.execute(f"SELECT name FROM users WHERE user_id = {id}")
-    result = cursor.fetchone()
-    if request.method == "POST":
-        message = request.form["message"]
-        image = request.files["image"]
-        image_path = None
-        if image and image.filename:
-            image_path = app.config['UPLOAD_FOLDER']+'/'+image.filename
-            image.save(image_path)
-        cursor = mysql.connection.cursor()
-        cursor.execute(f"INSERT INTO message_report VALUES(0,%s,%s,%s)",(message,result,image_path))
-        cursor.connection.commit()
-        return render_template("emp_send_report.html",id=id)
-    return render_template("emp_send_report.html",id=id)
+
 
 @app.route('/admin/message_report')
 def ad_message_report():
@@ -192,7 +216,7 @@ def ad_message_report():
         return redirect('/')
 @app.route('/admin/ad_monitor_performance')
 def admin_monitor_performance():
-    return render_template('ad_monitor_performance.html')
+    return render_template('admin_monitor_perf.html')
 
 @app.route('/admin/ad_user')
 def admin_user():
@@ -201,17 +225,16 @@ def admin_user():
     ad_user = cursor.fetchall()
     return render_template("profile.html",ad_user=ad_user)
 
+@app.route('/help')
+def help():
+    return render_template('help.html')
+
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect('/')
 
-@app.route("/message_report/delete/<string:id>")
-def message_report_delete(id):
-    cursor = mysql.connection.cursor()
-    cursor.execute(f"DELETE FROM message_report WHERE id = {id}")
-    cursor.connection.commit()
-    return redirect('/admin/message_report')
+
 
 if __name__ == "__main__":
     app.debug=True 
